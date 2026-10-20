@@ -61,6 +61,26 @@
 
         <form method="POST" action="/logout">
             @csrf
+        
+        @if (!auth()->user()->google_id)
+        
+        <div style="margin-top: 20px; text-align: center;">
+
+    <a href="{{ route('google.vincular') }}"
+       style="
+           display: inline-block;
+           background: #4285F4;
+           color: white;
+           padding: 12px 24px;
+           border-radius: 8px;
+           text-decoration: none;
+           font-weight: bold;
+       ">
+        Vincular mi cuenta con Google
+    </a>
+</div>
+
+@endif
             <button type="submit">Cerrar sesión</button>
         </form>
     </div>

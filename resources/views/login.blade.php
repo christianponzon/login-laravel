@@ -102,6 +102,19 @@
         <h1>Bienvenido</h1>
         <p class="subtitle">Inicia sesión en tu cuenta</p>
 
+        @if (session('error'))
+            <div style="
+            background: #ffe5e5;
+            color: #b00020;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+        ">
+            {{ session('error') }}
+        </div>
+    @endif
+
         <form id="loginForm">
         @csrf
             
@@ -129,6 +142,29 @@
 
             <button type="submit">Iniciar sesión</button>
         </form>
+
+        <!-- Inicio de sesión con Google -->
+<div style="margin-top: 20px; text-align: center;">
+
+    <p style="color: #777; margin-bottom: 15px;">
+        O continúa con
+    </p>
+
+    <a href="{{ route('google.login') }}"
+       style="
+           display: block;
+           padding: 12px;
+           background: white;
+           color: #333;
+           border: 1px solid #ddd;
+           border-radius: 8px;
+           text-decoration: none;
+           font-weight: 600;
+       ">
+        Continuar con Google
+    </a>
+
+</div>
 
         <p class="register">
             ¿No tienes una cuenta?

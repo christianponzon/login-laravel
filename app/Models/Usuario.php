@@ -17,12 +17,13 @@ class Usuario extends Authenticatable
 
     // Campos de la tabla
     protected $fillable = [
-        'Nombres',
-        'Apellido',
-        'FechaNacimiento',
-        'Correo',
-        'Passwordd',
-    ];
+    'Nombres',
+    'Apellido',
+    'FechaNacimiento',
+    'Correo',
+    'Passwordd',
+    'google_id',
+];
 
     // Ocultar datos sensibles
     protected $hidden = [

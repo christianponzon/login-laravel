@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\GoogleController;
 
 // Mostrar el Login visual
 Route::get('/login', function () {
@@ -69,3 +70,15 @@ Route::get('/nueva-password', function () {
 Route::get('/verificar-correo', function () {
     return view('verificar-correo');
 });
+
+// Redirigir al usuario a Google
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])
+    ->name('google.login');
+
+// Recibir la respuesta de Google
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])
+    ->name('google.callback');
+
+Route::get('/auth/google/vincular', [GoogleController::class, 'vincularGoogle'])
+    ->middleware('auth')
+    ->name('google.vincular');
